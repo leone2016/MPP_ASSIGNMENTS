@@ -30,7 +30,9 @@
 
 2. Create a User Case Diagram for the ATM system (refer to the slides for the three use cases that you will use). there shoud be two actors.
 
+   
 
+   <img src="./assets/userCase.png" alt="UserCase" style="zoom:50%;" />
 
 ---
 
@@ -38,47 +40,105 @@
 
 \- identify the classes for this system and determine the attributes that belong to each class. We will develop this example further in Lab For this lab, you do not need to specify associations or operations.
 
-```markdown
-Problem Description:
-
-A Project Manager manages multiple projects. A project, before final release, is required to have a specified feature set. Associated with a project are multiple releases. A release is a functional piece of the project being developed that includes a subset of the feature set for the project and which is to be delivered on a specified date (the feature set and release date are determined by the Project Manager). When the last release is delivered, the project is considered completed.
-
-Associated with each feature for a project is a developer who is responsible for developing this feature for inclusion in the project. A developer has an id and provides, for each feature he is responsible for, the estimated time remaining to complete work on that feature. The Project Manager assigns features to developers to work on.
-```
+> Problem Description:
+>
+> A Project Manager manages multiple projects. A project, before final release, is required to have a specified feature set. Associated with a project are multiple releases. A release is a functional piece of the project being developed that includes a subset of the feature set for the project and which is to be delivered on a specified date (the feature set and release date are determined by the Project Manager). When the last release is delivered, the project is considered completed.
+>
+> Associated with each feature for a project is a developer who is responsible for developing this feature for inclusion in the project. A developer has an id and provides, for each feature he is responsible for, the estimated time remaining to complete work on that feature. The Project Manager assigns features to developers to work on.
 
 For this lab, draw (by hand or using a UML tool) a class diagram to model this system. Your diagram should include all classes and attributes suggested by the problem statement. (And to repeat, you do not need to specify operations or associations. Also, you do not need to create a special class to represent the user interface.)
 
 ```mermaid
 classDiagram
+
   class ProjectManager {
     -String name
-    -String employeeId
+    -int employeeId
   }
 
   class Project {
-    +String projectId
-    +String projectName
-    +String featureSet
-    +Boolean isCompleted
+    -int projectId
+    -String projectName
+    -Release releases[]
+    -Boolean isCompleted
   }
 
   class Release {
-    +String releaseId
-    +String releaseName
-    +Date releaseDate
-    +String featuresIncluded
+    -int releaseId
+    -String releaseName
+    -Feature featureSet[]
+    -Date releaseDate
+    -String featuresIncluded
   }
 
   class Feature {
-    +String featureId
-    +String description
-    +Float estimatedTimeRemaining
+    -int featureId
+    -String description
+    -int developerID
+    -Float estimatedTimeRemaining
   }
 
   class Developer {
-    +String developerId
-    +String name
+    -int developerId
+    -String name
   }
+
+
+
+```
+
+________
+
+4. **Properties Management System.** The following is a problem statement for a simple properties management system, which would be used by a manager of multiple properties. Use the techniques discussed in class to create a static model - identify the classes for this system and determine the attributes that belong to each class. We will develop this example further later on - for this lab, you do not need to specify associations or operations.
+
+Problem Description:
+
+A landlord owns several types of properties: houses, condominiums, and trailers.
+
+A house has an address and a lot size. Rent for a house is computed by
+
+rent = 0.1 * lot size
+
+A condominium has an address and a certain number of floors (1 floor, 2 floors, or 3 floors). Rent for a condominium is computed by
+
+rent = 400 * number of floors
+
+A trailer belongs to a particular trailer park (specified by the trailer park address).
+
+The rent for a trailer is always $500.
+
+The property managemet software is required to have an Admin module that supports various functions. One of these functions is to compute total rent for all the properties registered in the system. Another function is to list all properties in the system that are in a specified city.
+
+For this lab, draw (or use a UML tool if you like) a class diagram to model this system. Your diagram should include all classes and attributes suggested by the problem statement. (And to repeat, you do not need to specify operations or associations. Also, you do not need to create a special class to represent the user interface.)
+
+```mermaid
+classDiagram
+  class Property {
+    -int propertyId
+    -String address
+    -String city
+  }
+
+  class House {
+    -Float lotSize
+  }
+
+  class Condominium {
+    -int numberOfFloors
+  }
+
+  class Trailer {
+    -String trailerParkAddress
+  }
+
+  class Admin {
+    -String adminId
+    -String name
+  }
+
+  %%Property <|-- House
+  %%Property <|-- Condominium
+  %%Property <|-- Trailer
 
 ```
 
