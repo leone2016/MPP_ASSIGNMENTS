@@ -72,6 +72,34 @@ ________
 
 >Name your java packages for these as follows: prob2A, prob2B
 
+```mermaid
+classDiagram
+    note "Prob 2A"
+
+  class Student {
+  
+    -name: String
+  }
+
+  class GradeReport
+
+  Student "1" --> "1" GradeReport
+
+```
+
+```mermaid
+classDiagram
+    note "Prob 2B"
+
+  class Order {
+    -orderNum: String
+  }
+
+  class OrderLine
+
+  Order "1" --> "1..*" OrderLine
+```
+
 
 
 -----
@@ -84,7 +112,7 @@ ________
    classDiagram
    
      %% Self-association: one position reports to another
-     Position "0..1" --> "0..*" Position
+     Position "0..1" --> "0..*" Position : reportsTo >
    
    ```
 
