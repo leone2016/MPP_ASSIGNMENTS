@@ -72,6 +72,8 @@ ________
 
 >Name your java packages for these as follows: prob2A, prob2B
 
+[Link practice prob2A](https://github.com/leone2016/MPP_ASSIGNMENTS/tree/main/lab2/PracticeLab2/src/prob2A)
+
 ```mermaid
 classDiagram
     note "Prob 2A"
@@ -86,6 +88,8 @@ classDiagram
   Student "1" --> "1" GradeReport
 
 ```
+
+[Link practice prob2B](https://github.com/leone2016/MPP_ASSIGNMENTS/tree/main/lab2/PracticeLab2/src/prob2B)
 
 ```mermaid
 classDiagram
