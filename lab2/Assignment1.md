@@ -47,13 +47,20 @@ classDiagram
   class Developer {
     -developerId: String
     -name: String
-    +getAssignedFeature(): List~Feature~
+    +getAssignedFeature() List~Feature~
   }
   
   
   %% Association
   
-  ProjectManager "1" --> "0..*" Project: manages
+  ProjectManager "1" --> "0..*" Project: manages >
+  Project "1" --> "1..*" Release : has >
+  Project "1" --> "1..*" Feature: contains >
+  Release "1" --> "1..*" Feature: delivers >
+  Feature "1" --> "1" Developer : assigned to >
+  Developer "1" --> "0..*" Feature : develops >
+  
+  
 	
 
 
@@ -61,3 +68,36 @@ classDiagram
 
 ________
 
+2. For each of the following small class diagrams, write corresponding Java code and create a main method that creates instances of the classes in the diagram in a way that agrees with the requirements of the diagram. For example, in a 1-1 two-way association between A and B, whenever an instance of A is created, an instance of B must also be created and each must contain an instance of the other.
+
+>Name your java packages for these as follows: prob2A, prob2B
+
+
+
+-----
+
+3. Draw a class diagram for each of the following:
+
+   A.   Position Hierarchy:A position may or may not be a managerial position. Each position reports to its managerial position if it has one. A managerial position could have any number of positions reporting to it
+
+   ```mermaid
+   classDiagram
+   
+     %% Self-association: one position reports to another
+     Position "0..1" --> "0..*" Position : reportsTo >
+   
+   ```
+
+   
+
+   B.   Course Prerequisites: **A** university course may or may not require the student to have taken other courses first before taking this one. Any course can be a prerequisite course for any other course, except for itself.
+
+   ```mermaid
+   classDiagram
+     %% Self-association: prerequisites
+     Course "0..*" --> "0..*" Course : prerequisites >
+     Course "1" --> "0..*" Student : has >
+   
+   ```
+
+   
