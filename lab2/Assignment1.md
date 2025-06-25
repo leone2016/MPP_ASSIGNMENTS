@@ -84,7 +84,7 @@ ________
    classDiagram
    
      %% Self-association: one position reports to another
-     Position "0..1" --> "0..*" Position : reportsTo >
+     Position "0..1" --> "0..*" Position
    
    ```
 
