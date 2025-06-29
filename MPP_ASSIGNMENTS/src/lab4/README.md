@@ -1,7 +1,4 @@
 # Lab 4
-
-
-
 #### A.  Re-draw the diagram so that it follows UML synatx rules. 
 
 Considered points: 
