@@ -49,6 +49,8 @@ sequenceDiagram
 
 Part D
 
+Create a sequence diagram for the problem described in Lab 4, Part C; your diagram should model the use case in which the paycheck for a **Commissioned employee** is computed. Create a distributed control solution. As you distribute control, make sure that the object that handles a step of processing really should be responsible for that behavior, based on the purpose of the class that was determined in the class diagram.
+
 ```mermaid
 sequenceDiagram
   participant Main
@@ -60,15 +62,15 @@ sequenceDiagram
   Main->>emp: 1. calcCompensation(month, year)
   emp->>emp: 2. calcGrossPay(month, year)
   emp->>ord: * 3. getOrderDate()
-  loop for each Order in emp.orders
+  loop List<Orders>
     ord-->>emp: returns orderDate
     ord->>ord: getOrderAmount()
-    ord-->>emp: returns amount
+    ord-->>emp: returns orderAmount
   end
-   emp-->>empSuper: returns totalGrossPay
-   empSuper->>pc: new Paycheck(grossPay)
-	  pc-->>empSuper: Paycheck object
-  empSuper-->>Main: returns Paycheck
+   emp-->>empSuper: 3.1. returns grossPay
+   empSuper->>pc: 4. new Paycheck(grossPay)
+	  pc-->>empSuper: 5. Paycheck object
+  empSuper-->>Main: 6. returns Paycheck
 
 
 
