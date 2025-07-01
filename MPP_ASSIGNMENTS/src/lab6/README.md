@@ -1,8 +1,6 @@
 # Lab 6
 
-_____
-
-> Lab Assignment (Refer to pages 476 and 477) --> Please solve problems 14.14 and 14.15
+>  Lab Assignment (Refer to pages 476 and 477) --> Please solve problems 14.14 and 14.15
 
 #### **14.14** 
 
@@ -21,13 +19,62 @@ Examine the Patient Medication Form for the *Wellmeadows Hospital* case study (s
 
 
 
+#### Assumptions.
+
+* Each patient has a unique number identifier. (Patien Number).
+* Each patiens has a unique room a ward.
+* Each drug  has a unique identifier.
+* Each patient can be administered a drug multiple times.
+
+#### Funtional dependencies
+
+* PID → Patien Number
+* PName → Full Name
+* BedNo → Bed Number
+* WardNo → Ward Number
+* WardName → Ward Name
+* DrugId → Drug Number
+* DrugName → DrugName
+* Desc → Drug Description
+* Dosage → Dosage
+* Dosage → Dosage
+* Method → Method of Administration
+* Units → Units per Day
+* SDate → Start Date
+* FDate → Finish Date
+
+#### Key Functional Dependencies:
+
+* PID → PName, BedNo, WardNo, WardName 
+* WardNo → WardName
+* DrugId → DrugName, Desc, Dosage
+
+#### 1NF – Eliminate Repeating Groups
+
+Already in 1NF — all values are atomic.
+
+#### 2NF – Eliminate Partial Dependencies
+
+| Table | Attributes                 | Primary Key |
+| ------- | -------------------------- | ----------- |
+| Patient | PID, FullName, BedNo | PatientNo(PID) |
+| Ward    | WardNo, WardName | WardNo |
+|     Drug    | DrugId, DrugName, Description, Dosage | DrugId |
+| Medication | PatientNo, DrugId, StartDate, Method, Units/Day, FinishDate | PatientNo, DrugNo, StartDate |
+
+#### 3NF – Schema summary
+
+Patient(PID, PName, BedNo, WardNo)
+Ward(WardNo, WardName)
+Drug(DNO, DName, Desc, Dosage)
+Medication(PNO, DNO, SDate, Method, Units, FDate)
 
 
 
 
 -------------
 
-#### **14.15** 
+### **14.15** 
 
 The table shown in Figure 14.19 lists sample dentist/patient appointment data. A patient is given an appointment at a specific time and date with a dentist located at a particular surgery. On each day of patient appointments, a dentist is allocated to a specific surgery for that day.
 
