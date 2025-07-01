@@ -22,7 +22,7 @@ Examine the Patient Medication Form for the *Wellmeadows Hospital* case study (s
 #### Assumptions.
 
 * Each patient has a unique number identifier. (Patien Number).
-* Each patiens has a unique room a ward.
+* Each patiens has a unique room in a  ward.
 * Each drug  has a unique identifier.
 * Each patient can be administered a drug multiple times.
 
@@ -64,10 +64,10 @@ Already in 1NF — all values are atomic.
 
 #### 3NF – Schema summary
 
-Patient(PID, PName, BedNo, WardNo)
-Ward(WardNo, WardName)
-Drug(DNO, DName, Desc, Dosage)
-Medication(PNO, DNO, SDate, Method, Units, FDate)
+* Patient(PID, PName, BedNo, WardNo)
+* Ward(WardNo, WardName)
+* Drug(DNO, DName, Desc, Dosage)
+* Medication(PNO, DNO, SDate, Method, Units, FDate)
 
 
 
@@ -85,3 +85,52 @@ The table shown in Figure 14.19 lists sample dentist/patient appointment data. A
 **(c)** Describe and illustrate the process of normalizing the table shown in Figure 14.19 to 3NF relations. Identify the primary, alternate, and foreign keys in your 3NF relations.
 
 ![Figure 14.19](assets/14-19.png)
+
+ 
+
+## (a) Susceptible anomalies
+
+#### Insertion Anomaly
+
+* There is no a primary key, it is supposed to be  surgeryNo, but it is not normalized allowing repeted appointments .
+* Every insertion mean to repeat values like patName
+* appointment time has a wrong format.
+
+#### Deletion Anomaly
+
+- If a patient's appointment is deleted, the associated dentist or surgery information might also be lost.
+  - Example: If  surgeryNo S15 is deleted it will delete 3 records for different patients.
+
+#### Update Anomaly
+
+- Dentist’s name or Surgery number needs to be updated in multiple places.
+  - Example: Changing *Robin Plevin*'s surgery from `S15` to `S17` would require updating **multiple rows**.
+
+##  (b) Functional Dependencies (FDs)
+
+### Assumptions:
+
+- `staffNo` uniquely identifies a **dentist**.
+- `patNo` uniquely identifies a **patient**.
+- A patient can have **only one appointment** at a time with a dentist.
+- A **surgery number** is assigned to a **dentist per date**.
+
+------
+
+### Functional Dependencies:
+
+1. **staffNo → DN** *(staffNo determines dentistName)*
+2. **patNo → patName** *(patNo determines patName)*
+3. **staffNo, appointment_date → surgeryNo** *(on a specific date, a dentist uses a specific surgery)*
+4. **patNo, appointment_date, appointment_time → staffNo, surgeryNo** *(a specific appointment identifies dentist and surgery)*
+
+### Final 3NF Relations
+
+
+
+| Relation              | Attributes                                       | Primary Key                               | Foreign Keys                       |
+| --------------------- | ------------------------------------------------ | ----------------------------------------- | ---------------------------------- |
+| **Dentist**           | staffNo, dentistName                             | staffNo                                   | —                                  |
+| **Patient**           | patNo, patName                                   | patNo                                     | —                                  |
+| **SurgeryAssignment** | staffNo, appointmentDate, surgeryNo              | (staffNo, appointmentDate)                | staffNo → Dentist                  |
+| **Appointment**       | patNo, appointmentDate, appointmentTime, staffNo | (patNo, appointmentDate, appointmentTime) | patNo → Patient, staffNo → Dentist |
