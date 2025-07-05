@@ -1,8 +1,6 @@
 package lab3.PracticeLab3.src.prob1;
 
 
-import java.util.Arrays;
-
 public class Person {
 
 	private String name;
@@ -14,7 +12,6 @@ public class Person {
 	}
 	@Override
 	public boolean equals(Object aPerson) {
-		Arrays.sort();
 		if(aPerson == null) return false; 
 		if(!(aPerson instanceof Person)) return false;
 		Person p = (Person)aPerson;
