@@ -46,6 +46,8 @@ multiple inheritance). Explain how features of Java 8 handle the Diamond Problem
 
 considering two scenarios:
 
+<img src="./image-20250704200713511.png" alt="UserCase" style="zoom:50%;" />
+
 * **When the type D is a class**
 
   In java it is not possible to implement two classes in type D, Java does not support multiple class inheritance
@@ -55,6 +57,32 @@ considering two scenarios:
   if type D is an interface it is not possible to extent a class only it is possible to extend another interface.
 
   but In case that A, B C, D were be interfaces, java allow interface to have default method, in case of conflict from 2 interfaces method, java force to override the conflicting method to resolve ambiguity
+  
+  
 
+**2. Problem Statement:** 
 
-![image-20250704200713511](image-20250704200713511.png)
+Design a system that represents and evaluates arithmetic expressions composed of:
+
+* Constants (like 5)
+* Addition (like 3 + 4)
+* Multiplication (like 2 * (3 + 1))
+
+Use a sealed interface to define the top-level Expr type. Then use Java records to implement
+
+different expression types:
+
+* Constant for a single integer value
+* Add for representing the sum of two expressions
+* Multiply for representing the product of two expressions
+
+Your goal is to:
+
+1. Define the data model using a sealed interface and records.
+2. Write a recursive method eval(Expr expr) that computes the result of an expression.
+3. Demonstrate your system by evaluating a complex expression like:
+   1. (2+3)∗4
+
+The expected output for this expression should be 20.   
+
+<img src="./image-20250705075452521.png" alt="UserCase" style="zoom:50%;" />

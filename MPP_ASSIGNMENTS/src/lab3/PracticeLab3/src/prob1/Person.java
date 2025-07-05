@@ -14,8 +14,7 @@ public class Person {
 	}
 	@Override
 	public boolean equals(Object aPerson) {
-		Arrays.sort();
-		if(aPerson == null) return false; 
+		if(aPerson == null) return false;
 		if(!(aPerson instanceof Person)) return false;
 		Person p = (Person)aPerson;
 		boolean isEqual = this.name.equals(p.name);
