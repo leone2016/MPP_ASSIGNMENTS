@@ -30,14 +30,15 @@ public class PrimeStream {
         if (n == 2) return true;
         if (n % 2 == 0) return false;
         for (int i = 3; i * i <= n; i += 2) {
-            if (n % i == 0) return false;
+            int test = n % i;
+            if (test == 0) return false;
         }
         return true;
     }
 
     // Part A: Creates an infinite stream of primes
     private Stream<Integer> generatePrimes() {
-        return Stream.iterate(2, i -> i + 1)
+        return Stream.iterate(2, i -> i + 1) //i++
                 .filter(this::isPrime); // Allowed here because it's inside a method
     }
 
@@ -50,7 +51,7 @@ public class PrimeStream {
 
     public static void main(String[] args) {
         PrimeStream ps = new PrimeStream();
-        ps.printFirstNPrimes(10);
+        ps.printFirstNPrimes(100);
         System.out.println("====");
         ps.printFirstNPrimes(5);
     }
