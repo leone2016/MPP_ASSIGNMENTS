@@ -1,4 +1,4 @@
-package final_exam.wildCard;
+package final_exam._4_wildCard;
 import java.util.*;
 
 /** Simple class hierarchy */
