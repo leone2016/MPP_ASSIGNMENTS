@@ -39,5 +39,14 @@ public class _14_Ride_Sharing_app_T {
      * newCachedThreadPool() ensures high throughput and responsiveness for a massive, fluctuating number of tiny, fast operations.
      *
      * SERVICE B:
+     * Reasoning:
+     *
+     * Longer, CPU-bound tasks (2–4 seconds): A fixed number of threads prevents overloading the CPU and keeps system stable.
+     *
+     * Server has 16 cores: To balance load with other backend services, use fewer than 16 threads, e.g., 8 or 12.
+     *
+     * Avoid contention: Too many threads doing heavy processing can hurt overall responsiveness due to context switching or memory pressure.
+     *
+     * Predictable rate: Fare calculations are tied to ride completions, which is more stable compared to location updates.
      */
 }
