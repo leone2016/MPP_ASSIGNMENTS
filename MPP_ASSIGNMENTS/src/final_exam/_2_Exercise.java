@@ -35,7 +35,6 @@ public class _2_Exercise {
         calorieMap.entrySet().stream()
                 .filter( x-> x.getKey().contains("Salad") && x.getValue() > 200)
                 .forEach( x-> System.out.println(x.getKey() + ": " + x.getValue()));
-
 //                .stream()
 //                .filter(x->x.contains("Salad"))
 //                .
