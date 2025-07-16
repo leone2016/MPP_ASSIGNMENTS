@@ -15,9 +15,7 @@ public class Group<T> {
 	}
 	@Override
 	public String toString() {
-		return "[special : " + specialElement.toString() 
-		    + ", elements :\n   " + elements.toString() + "]";
+		return "[special : " + specialElement.toString()
+				+ ", elements :\n   " + elements.toString() + "]";
 	}
-	
-	
 }
