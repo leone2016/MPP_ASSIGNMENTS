@@ -32,7 +32,7 @@
 
    
 
-   <img src="./assets/userCase.png" alt="UserCase" style="zoom:50%;" />
+   <img src="assets/userCase.png" alt="UserCase" style="zoom:50%;" />
 
 ---
 
