@@ -3,11 +3,11 @@
 > Reading: Beginning Java Objects, pp. 344-347, 352, 355-368. Also, read p. 416 for an example of a Use Case description for the Student Registration System.
 
 1. Below is a table showing the first step in a use case description for the main flow of the Withdraw Money use case for an ATM system. Use your experience with ATM machines to help you fill out the rest of the table. The goal of the Withdraw Money use case is, of course, to withdraw money from your account, and in the Main Flow of this use case, the goal is achieved as expected.
-
+˘˘˘¯¯¯˘¯˘...>>>>
 ### WITHDRAW_MONEY Use Case Description: Main Flow
 
-| User Action                                        | System Response                                              |
-| :------------------------------------------------- | ------------------------------------------------------------ |
+| User Acti˘˘on                                      | System Response                                              |
+|:---------------------------------------------------| ------------------------------------------------------------ |
 | User types in PIN into main screen                 | System checks validity of PIN and presents options to user on another screen |
 | User select "Withdraw" option                      | System save type and request type of account                 |
 | User selects "type account" "saving" or "Checking" | System save the type account  selected and system request amount to withdraw |
